@@ -27,7 +27,12 @@
       .container {
         max-width: 600px;
         width: 600px;
+        margin-bottom: 4rem;
       }
+    }
+
+    .active{
+        color: red;
     }
   </style>
 </head>
@@ -36,18 +41,45 @@
   <script defer src="js/vue-2.4.0.min.js"></script>
   <script defer src="js/otpauth-3.1.3.min.js"></script>
   <script defer src="js/clipboard-2.0.6.min.js"></script>
+  <script defer src="js/faker.min.js"></script>
   <script defer src="js/app.js?v=1.0"></script>
 
   <section id="app" class="section" v-cloak>
+
+    <div class="container" style="margin-bottom: 2rem;">
+        <h1 class="title">辅助工具</h1>
+
+        <div class="field">
+            <div class="control">
+                <button id="generator-username"  class="button" v-on:click="generateUsername">随机生成用户名</button>
+                <div style="margin: 0 20px;display: inline-block;">
+                    <label class="title is-size-3 has-text-centered" id="token">{{ username }}</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="field">
+            <div class="control">
+                <button id="generator-password"  class="button" v-on:click="generatePassword">生成一个随机密码</button>
+                <div style="margin: 0 20px;display: inline-block;">
+                    <label class="title is-size-3 has-text-centered" id="token">{{ password }}</label>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
 
     <div class="container">
 
       <h1 class="title">TOTP Token Generator</h1>
 
       <div class="field">
-        <label class="label is-uppercase">Your Secret Key</label>
+        <label class="label is-uppercase" v-bind:class="[hasError ? activeClass : '', '']">{{ SecretKeyTitle }}</label>
         <div class="control">
-          <input class="input" type="text" v-model="secret_key" placeholder="The secret key (in base-32 format)">
+          <input class="input" type="text" v-model="secret_key" 
+          v-on:input="updateSecret"
+          placeholder="The secret key (in base-32 format)">
         </div>
       </div>
 
@@ -86,12 +118,7 @@
 
   <footer class="footer">
     <div class="container">
-      <div class="content has-text-centered">
-        Built by <a href="https://dan.hersam.com">Dan Hersam</a>. Source on <a href="https://github.com/jaden/totp-generator">Github</a>.
-          <a class="icon" href="https://github.com/jgthms/bulma">
-            <i class="fa fa-github"></i>
-          </a>
-      </div>
+      <div class="content has-text-centered"></div>
     </div>
   </footer>
 
