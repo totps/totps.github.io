@@ -56,7 +56,12 @@
             <div class="control">
                 <button id="generator-username"  class="button" v-on:click="generateUsername">随机生成用户名</button>
                 <div style="margin: 0 20px;display: inline-block;">
-                    <label class="title is-size-3 has-text-centered" id="token">{{ username }}</label>
+                    <label class="title is-size-3 has-text-centered" id="username">{{ username }}</label>
+                    <div class="control is-clearfix" style="height: 40px !important; display: inline-block; margin-left: 5px;">
+                        <a class="button is-large is-light is-pulled-right" id="clipboard-button-username" style="padding: 8px 25px !important; height: 40px !important;" data-clipboard-target="#username" title="复制用户名">
+                            <img src="img/clippy.svg" height="24" width="24">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,14 +70,17 @@
             <div class="control">
                 <button id="generator-password"  class="button" v-on:click="generatePassword">生成一个随机密码</button>
                 <div style="margin: 0 20px;display: inline-block;">
-                    <label class="title is-size-3 has-text-centered" id="token">{{ password }}</label>
+                    <label class="title is-size-3 has-text-centered" id="password">{{ password }}</label>
+                    <div class="control is-clearfix" style="height: 40px !important; display: inline-block; margin-left: 5px;">
+                        <a class="button is-large is-light is-pulled-right" id="clipboard-button-password" style="padding: 8px 25px !important; height: 40px !important;" data-clipboard-target="#password" title="复制随机密码">
+                            <img src="img/clippy.svg" height="24" width="24">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
         
     </div>
-
-
     <div class="container">
 
       <h1 class="title">TOTP Token Generator</h1>

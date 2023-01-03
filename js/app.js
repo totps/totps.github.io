@@ -35,6 +35,8 @@ new Vue({
     updatingIn: 30,
     token: null,
     clipboardButton: null,
+    clipboardButtonUsername: null,
+    clipboardButtonPassword: null,
     username: '',
     password: '',
     SecretKeyTitle: 'Your Secret Key',
@@ -50,6 +52,8 @@ new Vue({
     this.intervalHandle = setInterval(this.update, 1000);
 
     this.clipboardButton = new ClipboardJS('#clipboard-button');
+    this.clipboardButtonUsername = new ClipboardJS('#clipboard-button-username');
+    this.clipboardButtonPassword = new ClipboardJS('#clipboard-button-password');
   },
 
   destroyed: function () {
