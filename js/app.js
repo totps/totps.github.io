@@ -101,7 +101,6 @@ new Vue({
     },
 
     updateSecret: function() {
-        console.log(this.secret_key)
         if(this.secret_key.length !=16){
             this.hasError = true
             this.SecretKeyTitle = "Your Secret Key (Length must be 16)"
@@ -113,6 +112,8 @@ new Vue({
 
     generateUsername: function(){
         var randomUsername = faker.internet.userName()
+        randomUsername = randomUsername.replace(/_/,"-")
+        randomUsername = randomUsername.replace(/\./,"-")
         this.username = randomUsername;
     },
 
