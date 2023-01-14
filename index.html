@@ -83,7 +83,7 @@
     </div>
     <div class="container">
 
-      <h1 class="title">TOTP Token Generator</h1>
+      <h1 class="title" style="display: none;">TOTP Token Generator</h1>
 
       <div class="field">
         <label class="label is-uppercase" v-bind:class="[hasError ? activeClass : '', '']">{{ SecretKeyTitle }}</label>
@@ -94,14 +94,14 @@
         </div>
       </div>
 
-      <div class="field">
+      <div class="field" style="display: none;">
         <label class="label is-uppercase">Number of Digits</label>
         <div class="control">
           <input class="input" type="text" v-model="digits" placeholder="Usually 6">
         </div>
       </div>
 
-      <div class="field">
+      <div class="field" style="display: none;">
         <label class="label is-uppercase">Token Period (in seconds)</label>
         <div class="control">
           <input class="input" type="text" v-model="period" placeholder="Usually 30">
@@ -113,11 +113,11 @@
         <progress class="progress is-info is-small" v-bind:value="updatingIn" :max="period"></progress>
       </div>
 
-      <div class="box">
+      <div class="box" style="display: inline-block;">
         <p class="title is-size-1 has-text-centered" id="token">{{ token }}</p>
       </div>
 
-      <div class="control is-clearfix">
+      <div class="control is-clearfix" style="display: inline-block;margin-top: 0px;margin-left: 20px;">
         <a class="button is-large is-light is-pulled-right" id="clipboard-button" data-clipboard-target="#token" title="Copy token to clipboard">
           <img src="img/clippy.svg" height="36" width="36">
         </a>
