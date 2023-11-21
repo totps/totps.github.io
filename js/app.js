@@ -103,10 +103,10 @@ new Vue({
     updateSecret: function() {
         if(this.secret_key.length !=16){
             this.hasError = true
-            this.SecretKeyTitle = "Your Secret Key (Length must be 16)"
+            this.SecretKeyTitle = "Secret Key (Length must be 16)"
         }else{
             this.hasError = false
-            this.SecretKeyTitle = "Your Secret Key"
+            this.SecretKeyTitle = "Secret Key"
         }        
     },
 
