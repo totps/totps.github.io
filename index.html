@@ -6,74 +6,22 @@
   <title>TOTP Generator</title>
   <link rel="stylesheet" href="css/bulma-0.9.0.min.css">
   <style>
-    [v-cloak] {
-      display: none;
-    }
-
-    html, body {
-      height: 100%;
-    }
-
-    body > footer {
-      position: sticky;
-      top: 100vh;
-    }
-
-    .footer {
-      padding: 2rem;
-    }
-
+    [v-cloak] { display: none; }
+    html, body { height: 100%; }
+    body > footer { position: sticky; top: 100vh; }
+    .footer { padding: 2rem; }
     @media screen and (min-width: 1068px) {
-      .container {
-        max-width: 600px;
-        width: 600px;
-        margin-bottom: 4rem;
-      }
+      .container { max-width: 600px; width: 600px; margin-bottom: 4rem; }
     }
 
-    .active{
-        color: red;
-    }
-
-    .section {
-      padding: 1rem 1.5rem 0rem !important;
-    }
-
-    .field {
-      margin-bottom: 0px !important;
-    }
-
-    .container{
-        margin-bottom: 0rem !important;
-    }
-
-    .box {
-        margin: 0rem !important;
-        padding: 3px 10px !important;
-    }
-    
-    p#token {
-        font-size: 26px !important;
-    }
-    
-    .keymessage {
-        display: inline-flex;
-        align-items: center;
-        font-size: 1.8rem;
-        font-weight: bold;
-        line-height: 0;
-        position: absolute;
-        margin-top: 18px;
-        color: #000;
-    }
-
-    h1.title {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-end;
-        justify-content: space-between;
-        margin-bottom: 12px !important;
-    }
+    .active{ color: red; }
+    .section { padding: 1rem 1.5rem 0rem !important; }
+    .field { margin-bottom: 0px !important; }
+    .container{ margin-bottom: 0rem !important; }
+    .box { margin: 0rem !important; padding: 3px 10px !important; }
+    p#token { font-size: 26px !important; }
+    .keymessage { display: inline-flex; align-items: center; font-size: 1.8rem; font-weight: bold; line-height: 0; position: absolute; margin-top: 18px; color: #000; }
+    h1.title { display: flex; flex-direction: row; align-items: flex-end; justify-content: space-between; margin-bottom: 12px !important; }
   </style>
 </head>
 <body>
@@ -83,13 +31,13 @@
   <script defer src="js/clipboard-2.0.6.min.js"></script>
   <script defer src="js/faker.min.js"></script>
   <script defer src="js/app.js?v=1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr"></script>
 
-  <section id="app" class="section" v-cloak>
+  <section id="app" class="section" v-cloak @dragover.prevent @dragenter.prevent @drop="handleDrop">
 
     <div class="container" style="margin-bottom: 2rem;">
         <h1 class="title">
             辅助工具
-            <a href="./YoungQRCode.zip" style="font-size: 0.6em;">点击此处下载解码工具</a>
             <button id="generator-all"  class="button" v-on:click="generateAll">一键生成帐号密码</button>
         </h1>
 
@@ -120,7 +68,6 @@
                 <div class="keymessage"><p id="password">{{ password }}</p></div>
             </div>
         </div>
-        
     </div>
     <div class="container" style="display: flex; flex-direction: row; align-items: flex-end; justify-content: space-between;">
 
@@ -167,6 +114,16 @@
         </a>
       </div>
     </div>
+
+    <div class="inline-block field">
+        <div v-if="qrCodeText" style="word-break: break-all; padding-top: 5px;">
+            <b>解析结果：</b>
+            {{ qrCodeText }}
+        </div>
+        
+      </div>
+
+      
 
   </section>
 
